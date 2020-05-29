@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Cafe">
+  <ClassDiagramComponents>
+    <Class name="Staff" package="domain" visibility="public" isAbstract="true" xPosition="678.0" yPosition="266.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="position" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="position"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="void" visibility="public"/>
+        <Method name="getPosition" returnType="void" visibility="public"/>
+        <Method name="setPosition" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="domain" visibility="public" xPosition="14.0" yPosition="11.0">
+      <Fields>
+        <Field name="dishName" type="String" visibility="private"/>
+        <Field name="price" type="int" visibility="private"/>
+        <Field name="weight" type="int" visibility="private"/>
+        <Field name="quantity" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="dishName"/>
+          <Argument type="int" name="price"/>
+          <Argument type="int" name="weight"/>
+          <Argument type="int" name="quantity"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Visitor" package="domain" visibility="public" xPosition="103.0" yPosition="266.0">
+      <Fields>
+        <Field name="visitorName" type="String" visibility="private"/>
+        <Field name="tableNumber" type="int" visibility="private"/>
+        <Field name="order" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="placeAnOrder" returnType="void" visibility="public"/>
+        <Method name="eat" returnType="void" visibility="public"/>
+        <Method name="toPay" returnType="void" visibility="public"/>
+        <Method name="giveFeedback" returnType="void" visibility="public"/>
+        <Method name="getOrder" returnType="void" visibility="public"/>
+        <Method name="setOrder" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Waiter" package="domain" visibility="public" xPosition="392.0" yPosition="163.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="acceptOrder" returnType="void" visibility="public"/>
+        <Method name="carryOrder" returnType="void" visibility="public"/>
+        <Method name="cleanTheDishes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cashier" package="domain" visibility="public" xPosition="372.0" yPosition="342.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="calculateOrderValue" returnType="void" visibility="public"/>
+        <Method name="acceptPayment" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cook" package="domain" visibility="public" xPosition="655.0" yPosition="58.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="cookFood" returnType="void" visibility="public"/>
+        <Method name="weighTheDish" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Manager" package="domain" visibility="public" xPosition="381.0" yPosition="505.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="acceptFeedback" returnType="void" visibility="public"/>
+        <Method name="checkEmployees" returnType="void" visibility="public"/>
+        <Method name="solveProblems" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="domain.Manager" target="domain.Staff"/>
+    <HasRelation name=" declare an order" source="domain.Waiter" target="domain.Cook" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="domain.Cook" target="domain.Staff"/>
+    <HasRelation name=" chooses" source="domain.Visitor" target="domain.Menu" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name=" serves" source="domain.Manager" target="domain.Visitor" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name=" serves" source="domain.Cashier" target="domain.Visitor" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name=" makes up" source="domain.Cook" target="domain.Menu" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="domain.Cashier" target="domain.Staff"/>
+    <IsRelation name="is" source="domain.Waiter" target="domain.Staff"/>
+    <HasRelation name=" serves" source="domain.Waiter" target="domain.Visitor" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
